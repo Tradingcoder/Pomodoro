@@ -21,7 +21,8 @@ namespace Pomodoro.Client
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainWindow : Window, IDisposable
+
     {
         public int PomoCount { get; set; }
 
@@ -33,14 +34,20 @@ namespace Pomodoro.Client
             lblPomoCount.Content = 0;
         }
 
+        CancellationTokenSource cts;
+        CancellationToken ct;
         private void button_Click(object sender, RoutedEventArgs e)
         {
 
+            cts = new CancellationTokenSource();
+            ct = cts.Token;
 
 
             // image.Source = new BitmapImage(new Uri("greenTick.jpg", UriKind.Relative));
             //  textBox.IsEnabled = false;
-            Task.Run(() => Time());
+            Task.Run(() => Time(), ct);
+
+           
         }
 
 
@@ -52,6 +59,17 @@ namespace Pomodoro.Client
             TimeSpan countdown = timeSpan;
             while (countdown > new TimeSpan(0, 0, 0)) 
             {
+                if (ct.IsCancellationRequested)
+                {
+                    sw.Stop();
+                    this.Dispatcher.Invoke(() => {
+                        lblCountdownTimer.Content = timeSpan;
+                    });
+
+                    ct.ThrowIfCancellationRequested();
+                   
+                }
+                
                 countdown = timeSpan - sw.Elapsed;
 
                 this.Dispatcher.Invoke(() => {
@@ -67,7 +85,13 @@ namespace Pomodoro.Client
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
-            
+            if (cts.Token.CanBeCanceled)
+                cts.Cancel();
+        }
+
+        public void Dispose()
+        {
+            cts.Dispose();
         }
     }
 }

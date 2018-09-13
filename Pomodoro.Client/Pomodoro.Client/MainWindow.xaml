@@ -5,26 +5,35 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:controls="clr-namespace:Pomodoro.Client"
         mc:Ignorable="d"
-        Title="Kamal's Productivity Client" Height="900" Width="1013">
-
-    <Grid Margin="0,0,-5,2.5">
-        <Label x:Name="lblCountdownTimer" Margin="407,10,443,799.5" FontSize="35" Content="25:00" RenderTransformOrigin="0.252,0.556" />
-        <Button x:Name="button" Content="Begin" HorizontalAlignment="Left" Margin="557,20,0,0" VerticalAlignment="Top" Width="48" Click="button_Click" RenderTransformOrigin="1.546,0.759" />
-        <Button x:Name="button1" Content="Reset" HorizontalAlignment="Left" Margin="557,48,0,0" VerticalAlignment="Top" Width="48" Click="button1_Click" RenderTransformOrigin="0.323,2.65"/>
-        <controls:HourInDay x:Uid="9" Hour="0900" Margin="41,201,657,502.5"></controls:HourInDay>
-        <controls:HourInDay x:Uid="10" Hour="1000" Margin="368,201,330,502.5"/>
-        <controls:HourInDay x:Uid="8" Hour="0800" Margin="41,7,657,695.5"/>
-        <controls:HourInDay x:Uid="11" Hour="1100" Margin="688,201,10,502.5"/>
-        <controls:HourInDay x:Uid="12" Hour="1200" Margin="41,396,657,307.5"/>
-        <controls:HourInDay x:Uid="13" Hour="1300" Margin="368,396,330,307.5"/>
-        <controls:HourInDay x:Uid="14" Hour="1400" Margin="688,396,10,307.5"/>
-        <controls:HourInDay x:Uid="15" Hour="1500" Margin="41,593,657,110.5"/>
-        <controls:HourInDay x:Uid="16" Hour="1600" Margin="368,593,330,110.5"/>
-        <controls:HourInDay  x:Uid="17" Hour="1700" ImgVisibility="Hidden"  Margin="688,593,10,110.5"/>
-        <Label x:Name="lblPomoCount" Margin="368,73,365,736.5" FontSize="35" Content="{Binding PomoCount, Mode=OneWay}" />
-        <controls:HourInDay x:Uid="18" Hour="1800" Margin="688,6,10,697.5"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="98" Margin="688,762,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="298"/>
-        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="600,767,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.539,0.615" Width="83"/>
+        Title="Kamal's Productivity Client" Height="1000" Width="1000">
+    <Grid>
+        <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="1*" />
+        <ColumnDefinition Width="1*" />
+        <ColumnDefinition Width="1*" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+        <RowDefinition Height="1*" />
+        <RowDefinition Height="1*" />
+        <RowDefinition Height="1*" />
+    </Grid.RowDefinitions>
+    <Label Grid.Row="1" x:Name="lblCountdownTimer" Margin="119,822,449,-12" FontSize="35" Content="25:00" RenderTransformOrigin="0.252,0.556" Grid.Column="1" />
+        <Button x:Name="button" Content="Begin" HorizontalAlignment="Left" Margin="269,832,0,0" VerticalAlignment="Top" Width="48" Click="button_Click" RenderTransformOrigin="1.546,0.759" Grid.Column="1" />
+        <Button x:Name="button1" Content="Reset" HorizontalAlignment="Left" Margin="269,860,0,0" VerticalAlignment="Top" Width="48" Click="button1_Click" RenderTransformOrigin="0.323,2.65" Grid.Column="1"/>
+        <controls:HourInDay x:Uid="9" Hour="0900" Margin="41,201,657,500" Grid.ColumnSpan="2"></controls:HourInDay>
+        <controls:HourInDay x:Uid="10" Hour="1000" Margin="86.5,201,330,500" Grid.Column="1"/>
+        <controls:HourInDay x:Uid="8" Hour="0800" Margin="41,7,657,694" Grid.ColumnSpan="2"/>
+        <controls:HourInDay x:Uid="11" Hour="1100" Margin="406.5,201,10,500" Grid.Column="1"/>
+        <controls:HourInDay x:Uid="12" Hour="1200" Margin="41,396,657,305" Grid.ColumnSpan="2"/>
+        <controls:HourInDay x:Uid="13" Hour="1300" Margin="86.5,396,330,305" Grid.Column="1"/>
+        <controls:HourInDay x:Uid="14" Hour="1400" Margin="406.5,396,10,305" Grid.Column="1"/>
+        <controls:HourInDay x:Uid="15" Hour="1500" Margin="41,593,657,108" Grid.ColumnSpan="2"/>
+        <controls:HourInDay x:Uid="16" Hour="1600" Margin="86.5,593,330,108" Grid.Column="1"/>
+        <controls:HourInDay  x:Uid="17" Hour="1700" ImgVisibility="Hidden"  Margin="406.5,593,10,108" Grid.Column="1"/>
+        <Label x:Name="lblPomoCount" Margin="41,818,689,-9" FontSize="35" Content="{Binding PomoCount, Mode=OneWay}" Grid.ColumnSpan="2" />
+        <controls:HourInDay x:Uid="18" Hour="1800" Margin="407,815,11,-35" Grid.Column="1"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="98" Margin="407,46,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="298" Grid.Column="1"/>
+        <Label x:Name="label" Content="Label" HorizontalAlignment="Left" Margin="318.5,767,0,0" VerticalAlignment="Top" RenderTransformOrigin="2.539,0.615" Width="83" Grid.Column="1"/>
 
     </Grid>
 </Window>
